@@ -51,7 +51,6 @@ jobs:
       - run: yarn add --cwd=test/e2e playwright@${{ matrix.playwright }} --no-lockfile
       - run: yarn run test-e2e
         if: ${{ matrix.headless == true }}
-        env:
       - run: HEADFUL=true xvfb-run --auto-servernum -- yarn run test-e2e
         if: ${{ matrix.headless == false }}
   lint:
