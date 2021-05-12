@@ -254,7 +254,7 @@ export async function getUbuntuVersion(): Promise<string> {
   return fields.get('version_id') || '';
 }
 
-function getDependencies(
+export function getDependencies(
   osVersion: 'ubuntu18.04' | 'ubuntu20.04',
   browsers: string[],
 ): string[] {
@@ -290,7 +290,7 @@ export async function run(): Promise<void> {
         deps = getDependencies('ubuntu20.04', browsers);
       } else {
         throw new Error(
-          'Cannot install dependencies for this linux distribution!',
+          'Cannot install dependencies for this linux distribution',
         );
       }
 
