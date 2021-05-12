@@ -11,6 +11,11 @@ esbuild
     outfile: 'dist/index.js',
     platform: 'node',
     target: ['node12'],
+    define: {
+      'process.env.npm_package_version': JSON.stringify(
+        process.env.npm_package_version,
+      ),
+    },
     banner: { js: '"use strict";' },
     bundle: true,
     minify: !dev,

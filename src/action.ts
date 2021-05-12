@@ -1,4 +1,4 @@
-import { getInput, setFailed } from '@actions/core';
+import { getInput, info, setFailed } from '@actions/core';
 import { exec } from '@actions/exec';
 import fs from 'fs';
 import os from 'os';
@@ -276,6 +276,8 @@ export function getDependencies(
 }
 
 export async function run(): Promise<void> {
+  info(`Action version: ${process.env.npm_package_version!}`);
+
   try {
     if (os.platform() === 'linux') {
       await exec('sudo', ['apt-get', 'update']);
