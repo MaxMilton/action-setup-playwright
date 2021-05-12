@@ -17,9 +17,11 @@ const headless = !process.env.HEADFUL;
 async function checkBrowser(browserType: BrowserType): Promise<boolean> {
   try {
     console.log(`Running ${browserType.name()}`);
+
     const browser = await browserType.launch({ headless });
     const page = await browser.newPage();
     await page.goto('http://localhost:8080');
+
     console.log(
       `- ${browserType.name()}:`,
       await page.evaluate(() => ({
@@ -27,12 +29,16 @@ async function checkBrowser(browserType: BrowserType): Promise<boolean> {
         clientHeight: document.documentElement.clientHeight,
       })),
     );
+
     await browser.close();
+
     console.log(`SUCCESS running ${browserType.name()}`);
+
     return true;
-  } catch (e) {
+  } catch (err) {
     console.log(`FAILED running ${browserType.name()}`);
-    console.error(e);
+    console.error(err);
+
     return false;
   }
 }
@@ -40,10 +46,13 @@ async function checkBrowser(browserType: BrowserType): Promise<boolean> {
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 server.listen(8080, async () => {
   let success = true;
+
   success = (await checkBrowser(chromium)) && success;
   // success = (await checkBrowser(firefox)) && success;
   // success = (await checkBrowser(webkit)) && success;
+
   server.close();
+
   // in case some browsers failed to close - exit process.
   process.exit(success ? 0 : 1);
 });
