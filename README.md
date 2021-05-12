@@ -36,7 +36,7 @@ jobs:
 
 ### Run in headful mode
 
-This action can also execute tests in headful mode. To do this, set the optional `headless` input to `false`.
+This action can also execute tests in headful mode. To do this, set the optional `headless` input to `false`:
 
 ```yml
 steps:
@@ -45,7 +45,7 @@ steps:
       headless: false
 ```
 
-Then use `xvfb-run` on a Linux agent.
+Then use `xvfb-run` on a Linux agent:
 
 ```sh
 # Windows/macOS
@@ -57,7 +57,7 @@ $ xvfb-run --auto-servernum -- yarn run test
 
 ### Select browsers
 
-By default system dependencies for all browsers are installed, however, you can limit this to specific browsers only. Set the optional `browsers` input to a comma-separated list of the browsers you intend to launch.
+By default system dependencies for all browsers are installed, however, you can limit this to specific browsers only. Set the optional `browsers` input to a comma-separated list of the browsers you intend to launch:
 
 ```yml
 steps:
