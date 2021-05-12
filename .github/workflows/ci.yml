@@ -32,6 +32,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # TODO: Test multiple OSs
+        # os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
         playwright: [latest, next]
         # TODO: Test empty + invalid browsers
         # browsers: ['chromium, firefox, webkit', 'chromium', '', 'fake']
