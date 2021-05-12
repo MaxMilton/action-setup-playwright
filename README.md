@@ -5,7 +5,7 @@
 
 # maxmilton/action-setup-playwright
 
-GitHub action to setup [Playwright](https://github.com/microsoft/playwright) in your CI workflows. Installs the system dependencies required to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
+GitHub action to setup `playwright` in your CI workflows. Installs the system dependencies required to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
 Originally based on <https://github.com/microsoft/playwright-github-action>.
 
