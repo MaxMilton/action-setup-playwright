@@ -254,18 +254,18 @@ export async function getUbuntuVersion(): Promise<string> {
   return fields.get('version_id') || '';
 }
 
-function getDependencies(
+export function getDependencies(
   osVersion: 'ubuntu18.04' | 'ubuntu20.04',
   browsers: string[],
 ): string[] {
-  const deps: string[] = [];
+  let deps: string[] = [];
 
   browsers.forEach((browser) => {
     switch (browser) {
       case 'chromium':
       case 'firefox':
       case 'webkit':
-        deps.concat(DEPENDENCIES[osVersion][browser]);
+        deps = deps.concat(DEPENDENCIES[osVersion][browser]);
         break;
       default:
         throw new Error(`Unrecognised browser ${browser}`);
@@ -290,7 +290,7 @@ export async function run(): Promise<void> {
         deps = getDependencies('ubuntu20.04', browsers);
       } else {
         throw new Error(
-          'Cannot install dependencies for this linux distribution!',
+          'Cannot install dependencies for this linux distribution',
         );
       }
 
