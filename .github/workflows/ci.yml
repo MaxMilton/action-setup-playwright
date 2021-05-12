@@ -22,7 +22,7 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       - name: Check dist/index.js is up-to-date
-        run: test -z "$(git status --porcelain)"' && exit 1
+        run: test -z "$(git status --porcelain)" && exit 1
   e2e:
     name: e2e playwright@${{ matrix.playwright}} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
     strategy:
