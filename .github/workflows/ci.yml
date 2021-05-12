@@ -24,9 +24,9 @@ jobs:
       - run: git status --porcelain
       - name: Check no untracked changes
         run: |
-          git_state=$(git status --porcelain)
-          echo "$git_state"
-          test -z "$git_state" && exit 1
+          git_status=$(git status --porcelain)
+          test -z "$git_status" || exit 1
+          echo "$git_status"
   e2e:
     name: e2e playwright@${{ matrix.playwright}} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
     strategy:
