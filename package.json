@@ -1,6 +1,6 @@
 {
   "name": "@maxmilton/action-setup-playwright",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "GitHub action to setup playwright in your CI workflows",
   "license": "MIT",
   "repository": "maxmilton/action-setup-playwright",
