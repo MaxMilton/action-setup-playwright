@@ -1,6 +1,6 @@
-!/dist/index.js
 *.log
 /coverage/
-/dist/
+/dist/*
+!/dist/index.js
 /node_modules/
 /package-lock.json*
