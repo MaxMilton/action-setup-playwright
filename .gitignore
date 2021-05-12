@@ -1,4 +1,5 @@
 *.log
+/cc-test-reporter
 /coverage/
 /dist/*
 !/dist/index.js
