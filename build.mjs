@@ -19,7 +19,7 @@ esbuild
     banner: { js: '"use strict";' },
     bundle: true,
     minify: !dev,
-    sourcemap: true,
+    sourcemap: dev,
     watch: dev,
     logLevel: 'debug',
   })
