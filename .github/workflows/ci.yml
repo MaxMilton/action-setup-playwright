@@ -34,8 +34,8 @@ jobs:
         exclude:
           - playwright: next
             browsers: 'chromium'
-    timeout-minutes: 10
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

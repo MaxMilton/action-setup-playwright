@@ -18,8 +18,8 @@ name: ci
 on: push
 jobs:
   e2e:
-    timeout-minutes: 10 # in case a browser hangs
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # in case a browser hangs
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
