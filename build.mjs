@@ -10,7 +10,7 @@ esbuild
     entryPoints: ['src/index.ts'],
     outfile: 'dist/index.js',
     platform: 'node',
-    target: ['node16'],
+    target: ['node12'],
     banner: { js: '"use strict";' },
     bundle: true,
     minify: !dev,
