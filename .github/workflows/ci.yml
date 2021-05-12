@@ -21,7 +21,9 @@ jobs:
           ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      - name: Check dist/index.js is up-to-date
+      - run: git status --porcelain
+      # Check dist/index.js is up-to-date
+      - name: git status --porcelain
         run: test -z "$(git status --porcelain)" && exit 1
   e2e:
     name: e2e playwright@${{ matrix.playwright}} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
