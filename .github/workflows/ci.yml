@@ -1,0 +1,67 @@
+name: ci
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: yarn install --frozen-lockfile
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: yarn run build
+      - run: yarn run test
+      - name: Report coverage
+        run: |
+          curl -Lo ./cc-test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
+          ./cc-test-reporter upload-coverage
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  e2e:
+    name: e2e playwright@${{ matrix.playwright}} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
+    strategy:
+      fail-fast: false
+      matrix:
+        playwright: [latest, next]
+        # TODO: Test empty + invalid browsers
+        # browsers: ['chromium, firefox, webkit', 'chromium', '', 'fake']
+        browsers: ['chromium, firefox, webkit', 'chromium']
+        headless: [true, false]
+        exclude:
+          - playwright: next
+            browsers: 'chromium'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - uses: ./
+        with:
+          browsers: ${{ matrix.browsers }}
+          headless: ${{ matrix.headless }}
+      - run: yarn install --frozen-lockfile
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: yarn run build
+      - run: yarn add --cwd=test/e2e playwright@${{ matrix.playwright }} --no-lockfile
+      - run: yarn run test-e2e
+        if: ${{ matrix.headless == true }}
+        env:
+      - run: HEADFUL=true xvfb-run --auto-servernum -- yarn run test-e2e
+        if: ${{ matrix.headless == false }}
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - run: yarn install --frozen-lockfile
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: yarn run lint

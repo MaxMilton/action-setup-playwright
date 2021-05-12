@@ -1,0 +1,45 @@
+{
+  "name": "@maxmilton/action-setup-playwright",
+  "version": "0.0.0",
+  "description": "GitHub action to setup playwright in your CI workflows",
+  "license": "MIT",
+  "repository": "maxmilton/action-setup-playwright",
+  "author": "Max Milton <max@happycode.ltd>",
+  "homepage": "https://github.com/MaxMilton/action-setup-playwright",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "NODE_ENV=production node build.mjs",
+    "dev": "NODE_ENV=development node build.mjs",
+    "lint": "yarn lint:js && yarn lint:ts",
+    "lint:js": "eslint --ignore-path .gitignore --ext .ts,.js,.mjs,.cjs .",
+    "lint:ts": "tsc --noEmit",
+    "prebuild": "rm -rf dist; mkdir dist",
+    "test": "c8 --all --include=src --reporter=text --reporter=lcovonly uvu -r esbuild-register test '\\.test\\.ts$'",
+    "test-e2e": "uvu -r esbuild-register test/e2e '\\.test\\.ts$'"
+  },
+  "dependencies": {
+    "@actions/core": "1.2.7",
+    "@actions/exec": "1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "15.0.2",
+    "@typescript-eslint/eslint-plugin": "4.23.0",
+    "@typescript-eslint/parser": "4.23.0",
+    "c8": "7.7.2",
+    "esbuild": "0.11.20",
+    "esbuild-register": "2.5.0",
+    "eslint": "7.26.0",
+    "eslint-config-airbnb-typescript": "12.3.1",
+    "eslint-plugin-import": "2.22.1",
+    "playwright": "1.11.0",
+    "prettier": "2.3.0",
+    "typescript": "4.2.4",
+    "uvu": "0.5.1"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
