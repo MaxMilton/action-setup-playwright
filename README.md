@@ -5,6 +5,8 @@
 
 # maxmilton/action-setup-playwright
 
+> TODO: DEPRECATE: Use `yarn playwright install-deps chromium` instead once current playwright@next is released -- https://github.com/microsoft/playwright-github-action/pull/44#issuecomment-841478583
+
 GitHub action to setup `playwright` in your CI workflows. Installs the system dependencies required to run cross-browser tests on Chromium, WebKit, and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
 Originally based on <https://github.com/microsoft/playwright-github-action>.
