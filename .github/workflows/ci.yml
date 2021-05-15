@@ -28,7 +28,7 @@ jobs:
           test -z "$git_status" || exit 1
           echo "$git_status"
   e2e:
-    name: e2e playwright@${{ matrix.playwright}} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
+    name: e2e playwright@${{ matrix.playwright }} browsers=${{ matrix.browsers }} headless=${{ matrix.headless }}
     strategy:
       fail-fast: false
       matrix:
