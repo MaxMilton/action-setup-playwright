@@ -1,11 +1,13 @@
+> DEPRECATED: Use `yarn playwright install-deps chromium` instead: <https://playwright.dev/docs/cli/#install-system-dependencies>.
+
+---
+
 [![Build status](https://img.shields.io/github/workflow/status/maxmilton/action-setup-playwright/ci)](https://github.com/maxmilton/action-setup-playwright/actions)
 [![Coverage status](https://img.shields.io/codeclimate/coverage/MaxMilton/action-setup-playwright)](https://codeclimate.com/github/MaxMilton/action-setup-playwright)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/maxmilton/action-setup-playwright)](https://github.com/maxmilton/action-setup-playwright/releases)
 [![Licence](https://img.shields.io/github/license/maxmilton/action-setup-playwright.svg)](https://github.com/maxmilton/action-setup-playwright/blob/master/LICENSE)
 
 # maxmilton/action-setup-playwright
-
-> TODO: DEPRECATE: Use `yarn playwright install-deps chromium` instead once current playwright@next is released -- https://github.com/microsoft/playwright-github-action/pull/44#issuecomment-841478583
 
 GitHub action to setup `playwright` in your CI workflows. Installs the system dependencies required to run cross-browser tests on Chromium, WebKit, and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
