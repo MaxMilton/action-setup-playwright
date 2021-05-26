@@ -1,4 +1,4 @@
-> DEPRECATED: Use `yarn playwright install-deps chromium` instead: <https://playwright.dev/docs/cli/#install-system-dependencies>.
+> DEPRECATED: Use `playwright` CLI instead e.g., `playwright install-deps chromium`. See <https://playwright.dev/docs/cli/#install-system-dependencies>.
 
 ---
 
