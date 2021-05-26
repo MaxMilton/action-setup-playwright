@@ -1,4 +1,4 @@
-import { getInput, setFailed } from '@actions/core';
+import { getBooleanInput, getInput, setFailed } from '@actions/core';
 import { exec } from '@actions/exec';
 import fs from 'fs';
 import os from 'os';
@@ -307,7 +307,7 @@ export async function run(): Promise<void> {
         await exec('sudo', ['apt-get', 'install', '-y', 'ffmpeg']);
       }
 
-      if (getInput('headless') !== 'true') {
+      if (!getBooleanInput('headless')) {
         await exec('sudo', ['apt-get', 'install', '-y', 'xvfb']);
       }
     }
