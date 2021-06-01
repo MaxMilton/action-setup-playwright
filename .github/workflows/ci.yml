@@ -59,7 +59,7 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
       - run: pnpm run build
-      - run: pnpm add --cwd=test/e2e playwright@${{ matrix.playwright }} --no-lockfile
+      - run: pnpm add --dir=test/e2e playwright@${{ matrix.playwright }} --no-lockfile
       - run: pnpm run test-e2e
         if: ${{ matrix.headless == true }}
       - run: HEADFUL=true xvfb-run --auto-servernum -- pnpm run test-e2e
