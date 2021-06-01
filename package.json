@@ -8,9 +8,9 @@
   "homepage": "https://github.com/MaxMilton/action-setup-playwright",
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_ENV=production node build.mjs",
+    "build": "pnpm run prebuild && NODE_ENV=production node build.mjs",
     "dev": "NODE_ENV=development node build.mjs",
-    "lint": "yarn lint:js && yarn lint:ts",
+    "lint": "pnpm run lint:js && pnpm run lint:ts",
     "lint:js": "eslint --ignore-path .gitignore --ext .ts,.js,.mjs,.cjs .",
     "lint:ts": "tsc --noEmit",
     "prebuild": "rm -rf dist; mkdir dist",
